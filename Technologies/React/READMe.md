@@ -10,8 +10,43 @@ It's a XML syntex for writing html in javascript file.
 **Q. What are States and Props?**
 **State** are the local data for a component and when a state is changed the html depending on the state re-renders. **Props** are properties received from the parent to child component.
 
+**Q. What is prop drilling?**
+When a prop of component is required to be used in it's nth child, then we have to pass it through inbetween childrens also. This is called prop drilling. It creates a tightly coupled component and clumpsy code. To avoid it we use **ContextApi** or **Redux**.
+
+**Q. Difference between ContextApi vs Redux?**
+Both are used to create global state for a react app. It works in a way that there will be a **Provider** to wrap a component and children component as **Consumer** to consume data. 
+Differences are following: 
+- **Dependecy**: ContextApi is inbuilt with react library itself whereas Redux is third party library.
+- **Bundle Size**: ContextApi doesn't add to your app bundle but Redux does.
+- **Ease of use**: ContextApi is very easy to get started but Redux requires some learning curve.
+- **Complexity**: ContextApi is good for small applications or where we dont need complex global states for different parts of the application. Redux is really great at handling complex state management or states for different parts of application.
+
+**Explain how Redux-Saga works**
+Redux is used manage global state of application. There are three components to it. The core concepts of Redux — Store, Actions, Reducers, Subscription.
+1. **Store** is where state is maintained.
+2. **Reducer** has initial state and updates the state based on the actionType with it's payload. 
+3. **Actions** are dispatched when we want to let reducer know about an event with actionType and payload.
+4. **Subscribe** is the way to get any global state in a component to reflect the UI. 
+
 **Q. How to update state in parent from child component?**
 To update parent, a function from parent can be passed to child as a prop and child can trigger the function and function in parent can update the state when triggered. Similar to how callback works.
+
+**Q. What is useRef?**
+`useRef` is used to create a ref to a html element which can be used to read content of the element or to focus.
+
+**Q. What are forwardRefs?**
+It's used to pass ref to the children component as a prop.
+```
+const FancyButton = React.forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+));
+
+// You can now get a ref directly to the DOM button:
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+```
 
 **Q. What are HOC?**
 Higher Order Component are component which takes component as argument and returns a new component which added functionality. They are used in case when one logic is repeated twice or more at different components. HOC can have that logic and component can use it. Purpose is to dedupplicate the code and less bundle size and maintainability. 
