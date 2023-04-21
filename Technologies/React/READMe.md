@@ -25,13 +25,22 @@ Differences are following:
 - **Ease of use**: ContextApi is very easy to get started but Redux requires some learning curve.
 - **Complexity**: ContextApi is good for small applications or where we dont need complex global states for different parts of the application. Redux is really great at handling complex state management or states for different parts of application.
 
-**Explain how Redux-Saga works**
+**Explain how Redux works.**
 
 Redux is used manage global state of application. There are three components to it. The core concepts of Redux — Store, Actions, Reducers, Subscription.
 1. **Store** is where state is maintained.
 2. **Reducer** has initial state and updates the state based on the actionType with it's payload. 
 3. **Actions** are dispatched when we want to let reducer know about an event with actionType and payload.
 4. **Subscribe** is the way to get any global state in a component to reflect the UI. 
+
+**Q. What are middlewares in Redux?**
+Middlewares are the somthing like interceptors which sits between dispatching an action and the moment it reaches to reducer. In Redux we use middlewares to handle async api calls. `redux-saga` (uses generator functions), `redux-thunk` (uses closure to wrap the actions) are two majorly used.  
+```
+const middlewareEnhancer = applyMiddleware(thunk or saga)
+
+// Pass enhancer as the second arg, since there's no preloadedState
+const store = createStore(rootReducer, middlewareEnhancer)
+```
 
 **Q. How to update state in parent from child component?**
 
@@ -101,7 +110,7 @@ const Home = () => {
 
 After react 16v, we can create states in function also using `useState`. And the lifecycle effects can be handled by `useEffect`. The only differency would be is that we can wite less code to achieve the same thing in functional component. And less code has its own advantages like better readablity, testing, less buggy.
 
-**How does useEffect handle component lifecycle?**
+**Q. How does useEffect handle component lifecycle?**
 
 There are basically three phases. Mounting, Updating, Unmounting. 
 ```
@@ -146,6 +155,10 @@ class ErrorBoundary extends React.Component {
   }
 }
 ```
+
+**Q. What is react-router?**
+
+As we know react is just a library. To create routes for our application we can use react-router lib to render different component for different brower path.
 
 **Q. How to improve Preformance?**
 
