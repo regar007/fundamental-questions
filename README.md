@@ -7,7 +7,6 @@ TLDR:
 - [Javascript](Technologies/Javascript/README.md)
 - [ReactJs](Technologies/React/README.md)
 - [NodeJs](Technologies/Node/README.md)
-- 
 
 **Databases**:
 - [Mongo](Databases/Mongo/README.md)
