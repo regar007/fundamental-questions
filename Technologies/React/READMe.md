@@ -1,4 +1,4 @@
-# React fundamentals
+# ReactJs fundamentals
 
 **Q. What is React?**
 

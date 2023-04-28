@@ -5,8 +5,8 @@ TLDR:
 
 **Technologies**:
 - [Javascript](Technologies/Javascript/README.md)
-- [Node](Technologies/Node/README.md)
-- [React](Technologies/React/README.md)
+- [NodeJs](Technologies/Node/README.md)
+- [ReactJs](Technologies/React/README.md)
 
 **Databases**:
 - [Mongo](Databases/Mongo/README.md)
