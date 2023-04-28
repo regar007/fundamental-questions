@@ -135,3 +135,25 @@ The `Promise` object represents the eventual completion (or failure) of an async
 
 When we have multiple promises to handle `Promise.all` is used to wait for all to and returns resolved, but if any promise gets rejected then Promise.all returns rejected. But in case of `Promise.allSettled` return array of resolved and rejected promises and let us manually handle the responses. 
 
+**Q. Shallow vs Deep copy**
+Shallow copy is data is copied only at 1 or 2 level depth but nested object shares the same reference.
+```
+let data1 = {
+    name: 'Ashok',
+    skills: {
+        node: 'expert',
+        react: 'good'
+    }
+    getName: function(){
+        return this.name;
+    }
+}
+
+let data2 = Object.assign({}, data1)
+//OR
+data2 = {...data1} //destruction
+```
+In above example if we modify `data2.skills.node = 'okay'`, it will also modify the `data1.skiils` object.
+
+To create deep copy there are ways in which `JSON.parse(JSON.stringify(data1))` is popular, but it we will loose the types, functions, dates etc. To create a exact deep copy one can use Lodash library function `_.cloneDeep(data1)` or write a function to iterate all nested elements of the data1 and add to new data2.
+

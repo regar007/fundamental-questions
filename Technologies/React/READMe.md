@@ -178,9 +178,8 @@ This is applicable to web security in general. Here are a few of them:
 - **User credentials**: Never store user credentials in web storage. base64 encode and send to authentication api once and use tokens for future requests. Enforse strong password policy.
 - **Cross-site scripting (XSS)**: Form submittion. the injected code enters the browser from the site, the code is reliable and can do things like sending the user’s site authorization cookie to the attacker.
 - **SQL Injection**: Attacker can also send SQL qury in input fields. If it get executed on db without validation, they data could be stolen or currupted. Other similar attacks are CSRF, Phishing, Ransomware, Code Injection, Viruses and worms, Spyware. To handle SQL injection this frontend should validate input fields. To handle CSRF attack app should get CSRF token from server for making api call and send that as validation token for server. 
-- **Denial of Service (DDOS)**: It happens when some attackers may flood you server with requests, which may crash the server. To handle this we should have rate limitting strategy implemeted at application layer.
 - **Updated Software**: Always update libraries to get security updates.
-- **Authorisation**: We Should have authorization for every request and every user for the resources to be accessed i.e., zero trust policy. This way, get request will never be able to write to db, but only read only a limited data.
+- **Proxy**: A firewall for client to filter data requested from outside world.
 
 
 

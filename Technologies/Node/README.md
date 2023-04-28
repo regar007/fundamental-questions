@@ -68,3 +68,17 @@ Its used as middleware for authentication pupose. It provides different ways (st
 **Q. EventEmitter in nodejs**
 
 `EventEmitter` is used to create events similar to bwroser events to manually trigger and listen to those events. `.emit` and `.on` is used to emit and listen.
+
+**Q. Security considerations**
+- **Secrets**: Always put app secrets in .env file and add it to .gitignore.
+- **ReverseProxy**: Used for server secuity by adding firewall rules, request filtering, caching layer before server, load balancer.
+- **Basic Secuirity**: Halmet library for basic secuirities like CORS, XSS protection etc by setting the right headers.
+- **Aunthentication**: Authenticate first time users by creds or auth providers.
+- **Authorisation**: We Should have authorization for every request and every user for the resources to be accessed i.e., zero trust policy. This way, get request will never be able to write to db, but only read only a limited data.
+- **Denial of Service (DDOS)**: It happens when some attackers may flood you server with requests, which may crash the server. To handle this we should have rate limitting strategy implemeted at application layer.
+- **Request validations**: always validate request content using classvalidator/joi to parse fields and type validation before using them in database access to avoid sql injection.
+- **Encryption**: always encypt sensitive data coming to database using bcrypt or other lib.
+- **Ports & Services Hiding**: We should not expose the database port and internal services to internet to avoid attacks.
+- **Request Payload Size**: We should limit the request payload size to avoid server/database crash.   
+
+ 
