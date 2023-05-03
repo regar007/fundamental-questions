@@ -1,14 +1,20 @@
 # Tech Fundamental
 A common place for fundamental questions about various technologies
 
-### Topics:
+## Table of Contents
+- [Tech Fundamental](#tech-fundamental)
+  - [Table of Contents](#table-of-contents)
+    - [Technologies](#technologies)
+    - [Databases](#databases)
+  - [Contributing](#contributing)
 
-**Technologies**:
+
+### Technologies
 - [Javascript](Technologies/Javascript/README.md)
 - [NodeJs](Technologies/Node/README.md)
 - [ReactJs](Technologies/React/README.md)
 
-**Databases**:
+### Databases
 - [Introduction](Databases/README.md)
 - [SQL](Databases/SQL/README.md)
 - [NoSQL](Databases/NoSQL/README.md)

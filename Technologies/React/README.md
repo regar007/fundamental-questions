@@ -1,22 +1,45 @@
-# ReactJs fundamentals
 
-**Q. What is React?**
+
+## ReactJs Fundamentals
+
+### Table of Contents
+- [ReactJs Fundamentals](#reactjs-fundamentals)
+  - [Table of Contents](#table-of-contents)
+  - [What is React?](#what-is-react)
+  - [What is JSX?](#what-is-jsx)
+  - [What are States and Props?](#what-are-states-and-props)
+  - [What is prop drilling?](#what-is-prop-drilling)
+  - [Difference between ContextApi vs Redux?](#difference-between-contextapi-vs-redux)
+  - [What are middlewares in Redux?](#what-are-middlewares-in-redux)
+  - [How to update state in parent from child component?](#how-to-update-state-in-parent-from-child-component)
+  - [What is useRef?](#what-is-useref)
+  - [What are forwardRefs?](#what-are-forwardrefs)
+  - [What are HOC?](#what-are-hoc)
+  - [What are custom hooks?](#what-are-custom-hooks)
+  - [Class vs Functional Component?](#class-vs-functional-component)
+  - [How does useEffect handle component lifecycle?](#how-does-useeffect-handle-component-lifecycle)
+  - [What are error boundaries?](#what-are-error-boundaries)
+  - [What is react-router?](#what-is-react-router)
+  - [How to improve Preformance?](#how-to-improve-preformance)
+  - [What consideration you would make to handle security?](#what-consideration-you-would-make-to-handle-security)
+
+### What is React?
 
 It's a Library. It uses **virtual dom** which is a copy of **real dom** and whenever a state is changed and virtual dom is updated, react only re-renders that node of the real dom instead of complete dom.
 
-**Q. What is JSX?**
+### What is JSX?
 
 It's a XML syntex for writing html in javascript file.
 
-**Q. What are States and Props?**
+### What are States and Props?
 
 **State** are the local data for a component and when a state is changed the html depending on the state re-renders. **Props** are properties received from the parent to child component.
 
-**Q. What is prop drilling?**
+### What is prop drilling?
 
 When a prop of component is required to be used in it's nth child, then we have to pass it through inbetween childrens also. This is called prop drilling. It creates a tightly coupled component and clumpsy code. To avoid it we use **ContextApi** or **Redux**.
 
-**Q. Difference between ContextApi vs Redux?**
+### Difference between ContextApi vs Redux?
 
 Both are used to create global state for a react app. It works in a way that there will be a **Provider** to wrap a component and children component as **Consumer** to consume data. 
 Differences are following: 
@@ -33,7 +56,7 @@ Redux is used manage global state of application. There are three components to 
 3. **Actions** are dispatched when we want to let reducer know about an event with actionType and payload.
 4. **Subscribe** is the way to get any global state in a component to reflect the UI. 
 
-**Q. What are middlewares in Redux?**
+### What are middlewares in Redux?
 Middlewares are the somthing like interceptors which sits between dispatching an action and the moment it reaches to reducer. In Redux we use middlewares to handle async api calls. `redux-saga` (uses generator functions), `redux-thunk` (uses closure to wrap the actions) are two majorly used.  
 ```
 const middlewareEnhancer = applyMiddleware(thunk or saga)
@@ -42,15 +65,15 @@ const middlewareEnhancer = applyMiddleware(thunk or saga)
 const store = createStore(rootReducer, middlewareEnhancer)
 ```
 
-**Q. How to update state in parent from child component?**
+### How to update state in parent from child component?
 
 To update parent, a function from parent can be passed to child as a prop and child can trigger the function and function in parent can update the state when triggered. Similar to how callback works.
 
-**Q. What is useRef?**
+### What is useRef?
 
 `useRef` is used to create a ref to a html element which can be used to read content of the element or to focus.
 
-**Q. What are forwardRefs?**
+### What are forwardRefs?
 
 It's used to pass ref to the children component as a prop.
 ```
@@ -65,11 +88,11 @@ const ref = React.createRef();
 <FancyButton ref={ref}>Click me!</FancyButton>;
 ```
 
-**Q. What are HOC?**
+### What are HOC?
 
 Higher Order Component are component which takes component as argument and returns a new component which added functionality. They are used in case when one logic is repeated twice or more at different components. HOC can have that logic and component can use it. Purpose is to dedupplicate the code and less bundle size and maintainability. 
 
-**Q. What are custom hooks?**
+### What are custom hooks?
 
 Hooks in react are used in functional component, like `useState()` to create a state object. When you have component logic that needs to be used by multiple components, we can extract that logic to a custom Hook. Custom Hooks start with "use". Example: useFetch.
 
@@ -106,11 +129,11 @@ const Home = () => {
 };
 ```
 
-**Q. Class vs Functional Component?**
+### Class vs Functional Component?
 
 After react 16v, we can create states in function also using `useState`. And the lifecycle effects can be handled by `useEffect`. The only differency would be is that we can wite less code to achieve the same thing in functional component. And less code has its own advantages like better readablity, testing, less buggy.
 
-**Q. How does useEffect handle component lifecycle?**
+### How does useEffect handle component lifecycle?
 
 There are basically three phases. Mounting, Updating, Unmounting. 
 ```
@@ -125,7 +148,7 @@ If we dont pass `[]` -> data fetching happens on every render. i.e., Mounting & 
 If we pass `[]` -> data fetching happens only on first render. i.e., Mounting
 if we pass `['state1', 'state2']` -> data fetching happens every time `state1` or `state2` updates. i.e., Mounting & Updating when `state1`, `state2` changes
 
-**Q. What are error boundaries?**
+### What are error boundaries?
 
 Error boundries are used to render a fallback UI when an error happens while rendering of component. Only possible using class component. Wrap App component inside `ErrorBoundary`.
 ```
@@ -156,11 +179,11 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-**Q. What is react-router?**
+### What is react-router?
 
 As we know react is just a library. To create routes for our application we can use react-router lib to render different component for different brower path.
 
-**Q. How to improve Preformance?**
+### How to improve Preformance?
 
 For starter to know what are the bottlenecks we should use ReactProfiler which will tell us which pages are rendering slower, why re-renders are happening and network latency. Few tachniques are listed down:
 - **Webpack**: to create effiecient bundling chunks (code splitting) and thrid party library management
@@ -171,7 +194,7 @@ For starter to know what are the bottlenecks we should use ReactProfiler which w
 - **Key Prop**: React uses key property on elements to track if they changed. Always use key prop for list itmes, so that react only renders the new items added to the list instead of re-rendering all items.
 - **Small Component**: Breakdown the large components into small components and reuse whereever possible. This would stop re-rendering of components which dont need to, since state will affect its children. i.e., limitting the state local scope to minimal ui.
 
-**Q. What consideration you would make to handle security?**
+### What consideration you would make to handle security?
 
 This is applicable to web security in general. Here are a few of them:
 - **Secrets**: Always put app secrets in .env file and add it to .gitignore.

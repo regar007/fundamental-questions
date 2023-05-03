@@ -1,6 +1,15 @@
-# DATABASE fundamentals
+## Database Fundamentals
 
-**Q. Difference between SQL vs NoSQL**
+### Table of Contents
+- [Database Fundamentals](#database-fundamentals)
+  - [Table of Contents](#table-of-contents)
+  - [Difference between SQL vs NoSQL](#difference-between-sql-vs-nosql)
+  - [What is database replication?](#what-is-database-replication)
+  - [Database Sharding and Partioning](#database-sharding-and-partioning)
+  - [Consistent Hashing](#consistent-hashing)
+
+
+### Difference between SQL vs NoSQL
 
 SQL databases are Relational Databases (RDBMS) whereas NoSQL databases are Non Relational Databases (NonRDBMS). Following are the differences between them:
 - **Relations**: When we have to have relations between the data objects like parent-child or linked data like two interdepndent data objects. It easier to implements these logics in SQL compared to NoSQL.
@@ -12,7 +21,7 @@ SQL databases are Relational Databases (RDBMS) whereas NoSQL databases are Non R
 - **Joins**: SQL supports Joins for complex queries. NoSQL doesn't support it.
 - **Examples**: SQL (MySQL, PostgreSQL, Oracle). NoSQL (MongoDB, Cassandra, Couchbase, Amazon DynamoDB, Redis)
 
-**Q. What is database replication?**
+### What is database replication?
 
 When we create more than one copy of database and they are in sync, Its called db replication. There is `master` and `read` replicas.
 There are many benefits of doing that:
@@ -26,7 +35,7 @@ There are different solutions people try to solve this issue:
     - **Write with feedback**: This is done by using events by making write request wait for any 2-3 replica to send read done status and then write sends response. This strategy is partially asynchronus (**pros**: writes are more balanced)
 
 
-**Q. Database Sharding and Partioning**
+### Database Sharding and Partioning
 
 Partitioning is more a generic term for dividing data across tables or databases. Sharding is one specific type of partitioning, part of what is called horizontal partitioning.
 Here you replicate the schema across (typically) multiple instances or servers, using some kind of logic or identifier to know which instance or server to look for the data. An identifier of this kind is often called a "Shard Key".  
@@ -37,7 +46,7 @@ Sharding is not easy as it looks in the above exmaple. To give a gist of complex
 
 To solve the above issue, Consistent Hashing is used. 
 
-**Q. Consistent Hashing**
+### Consistent Hashing
 
 ![consistent hashing](../public/consistent-hashing.jpg.png)
 
