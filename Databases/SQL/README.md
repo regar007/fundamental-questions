@@ -4,9 +4,17 @@
 - [SQL Fundamentals](#sql-fundamentals)
   - [Table of Contents](#table-of-contents)
   - [What is DBMS?](#what-is-dbms)
+  - [What is RDBMS?](#what-is-rdbms)
+  - [What are different types of relations exist in databases?](#what-are-different-types-of-relations-exist-in-databases)
+  - [Difference between Network and Hierarchical database models](#difference-between-network-and-hierarchical-database-models)
+  - [What is Query Optimizer?](#what-is-query-optimizer)
+  - [Difference between Exclusive \& Shared Lock](#difference-between-exclusive--shared-lock)
   - [What is postgreSQL?](#what-is-postgresql)
   - [What are constrains \& their types?](#what-are-constrains--their-types)
   - [Difference between Delete vs Drop vs Truncate](#difference-between-delete-vs-drop-vs-truncate)
+  - [Union vs Union All](#union-vs-union-all)
+  - [What are manipulation functions in sql?](#what-are-manipulation-functions-in-sql)
+  - [Having vs Where Clause](#having-vs-where-clause)
   - [Differentiate Group By \& Order By](#differentiate-group-by--order-by)
   - [Types of Joins supported in SQL](#types-of-joins-supported-in-sql)
   - [Nested Subquery vs Correlated Subquery](#nested-subquery-vs-correlated-subquery)
@@ -16,6 +24,7 @@
   - [How to select 2nd Highest salary using MAX aggregation function in salary column?](#how-to-select-2nd-highest-salary-using-max-aggregation-function-in-salary-column)
   - [Difference between VARCHAR vs VAR](#difference-between-varchar-vs-var)
   - [What is Trigger?](#what-is-trigger)
+  - [Difference between Trigger and Stored Procedure](#difference-between-trigger-and-stored-procedure)
   - [Functional vs Transitive Dependency](#functional-vs-transitive-dependency)
 
 
@@ -23,9 +32,29 @@
 
 Databse Management System is software used to define, create, maintain the database and provides controlled access to the data.
 
-**What is RDBMS?**
+### What is RDBMS?
 
 **R** stands for Relational. RDBMS is used to only store or manage the data that are stored in form of tables.
+
+### What are different types of relations exist in databases?
+There are basically three types of relations between two entities:
+- **One to One**: A One-to-one relationship means a single record in Table A is related to the single record in Table B and vice-versa.
+- **One to Many**: Such a relationship exists when each record of table A can be related to one or more records of another table i.e., table B. However, a single record in table B will have a link to a single record in table A. 
+- **Many to Many**: A many-to-many relationship exists between the tables if a single record of the first table is related to one or more records of the second table and a single record in the second table is related to one or more records of the first table. 
+
+### Difference between Network and Hierarchical database models
+- **Network Model**: Each parent node has one or many child nodes or vise versa. This model supports all three types of relations mentioned above. (Graph structure)
+- **Hierarchical Model**: Each parent node has one or many child nodes but child can have only a single parent node. This model support only one-to-one and one-to-many relations between entities. (Tree structure)
+
+
+### What is Query Optimizer?
+
+The query optimizer in DBMS attempts to determine the most efficient way to execute a given query by considering the possible query plans.
+
+### Difference between Exclusive & Shared Lock
+
+- **Exclusive Lock**: (For Write) It is created on a data item on which transaction is abput to write.
+- **Shared Lock**: (For Reads) It allows more than one transactions to read data items.
 
 ### What is postgreSQL?
 
@@ -69,9 +98,28 @@ There are 5 types of commands:
 
 ### Difference between Delete vs Drop vs Truncate
 
-- **DELETE**: Deletes one or all rows from a table. Can be rolled back (DML).
-- **TRUNCATE**: Deletes all rows from a table. Can **not** be rolled back (DDL) 
-- **DROP**: Deletes a databse or a table and it's rows. Can **not** be rolled back (DDL).
+- **DELETE**: Deletes one or all rows from a table. Can be rolled back (DML). Slower than Truncate.
+- **TRUNCATE**: Deletes all rows from a table. Can **not** be rolled back (DDL). Faster than Delete & Drop.
+- **DROP**: Deletes a databse, view or a table and it's rows. Can **not** be rolled back (DDL). Slower than Truncate.
+
+### Union vs Union All
+
+Both combines the results of two or more sql statements.
+- **Union**: Duplicate rows are removed. Slower than union all as there is deduplication.
+- **Union ALL**: Doesn't remove the duplicate rows. faster then union.
+
+### What are manipulation functions in sql?
+
+There are many functions to modify the column value while executing the query. following are a few:
+- **UPPER(name)**: makes the letters capital in query.
+- **INITCAP(name)**: makes first letter uppercase and rest letters in lowercase.
+- **CONCAT(name, address)**: concat the values into one string value.
+- **MOD(rowno, 2)**: Will return 0 for even rows and 1 for odd rows.
+
+### Having vs Where Clause
+
+Having is used in Group By clouse with select statement.
+Where clause is applied on each row before they are part of Group By function in a query.
 
 ### Differentiate Group By & Order By
 
@@ -163,7 +211,14 @@ Student
 for each row 
 set Student.total = Student.subj1 + Student.subj2 + Student.subj3, Student.per = Student.total * 60 / 100;
 ``` 
-Normally stored procedure are group of SQL commands stored and can be executed manually with `exec` or scheduled. Triggers are not run manually.
+
+### Difference between Trigger and Stored Procedure
+
+- **Composition**: Normally stored procedure are group of SQL commands stored and can be executed manually with `exec` or scheduled. Triggers are not run manually.
+- **Input Parameters**: Parameters can be passed to stored procedure but not to triggers.
+- **Return Values**: Stored procedure can call another stored procedure but not triggers.
+- **Transactions**: Stored procedure can run transactions but not triggers.
+
 
 **What are ACID Proprties?**
 

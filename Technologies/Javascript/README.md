@@ -5,7 +5,7 @@
   - [Table of Contents](#table-of-contents)
   - [How does Javascript works?](#how-does-javascript-works)
   - [What is event-loop?](#what-is-event-loop)
-  - [Q What is hoisting in js?](#q-what-is-hoisting-in-js)
+  - [What is hoisting in js?](#what-is-hoisting-in-js)
   - [Map, WeakMap, Set WeakSet](#map-weakmap-set-weakset)
   - [Call vs Bind vs Apply](#call-vs-bind-vs-apply)
   - [Write a polyfill for bind function](#write-a-polyfill-for-bind-function)
@@ -32,7 +32,7 @@ So There are multiple queues which are present for handling different kind of as
 
 ![Event-Loop](../../public/event-loop.jpg.png)
 
-### Q What is hoisting in js?
+### What is hoisting in js?
 
 Hoisting is the mechanism by which js create a global execution context where the variables and function gets declared before execution starts. js hoist/declare the `var` and function but does not hoist `let` `const` and `arrow functions`. For `let` and `cost`, from the point execution starts to the point where they are declared is called the `temporal dead zone` and we try to access them we get reference error.
 `var` is function scopped whereas `let` and `const` are block/lexically scopped. 
