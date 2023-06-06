@@ -98,7 +98,7 @@ Its used as middleware for authentication pupose. It provides different ways (st
 - **Aunthentication**: Authenticate first time users by creds or auth providers.
 - **Authorisation**: We Should have authorization for every request and every user for the resources to be accessed i.e., zero trust policy. This way, get request will never be able to write to db, but only read only a limited data.
 - **Denial of Service (DDOS)**: It happens when some attackers may flood you server with requests, which may crash the server. To handle this we should have rate limitting strategy implemeted at application layer.
-- **Request validations**: always validate request content using classvalidator/joi to parse fields and type validation before using them in database access to avoid sinjection.
+- **Request validations**: always validate request content using classvalidator/joi to parse fields and type validation before using them in database access to avoid sql injection.
 - **Encryption**: always encypt sensitive data coming to database using bcrypt or other lib.
 - **Ports & Services Hiding**: We should not expose the database port and internal services to internet to avoid attacks.
 - **Request Payload Size**: We should limit the request payload size to avoid server/database crash.   
